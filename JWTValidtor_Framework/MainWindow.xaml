@@ -1,0 +1,26 @@
+﻿<Window x:Class="JWTValidetor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JWTValidetor"
+        mc:Ignorable="d"
+        Title="JWTValidetor" Height="450" Width="310">
+    <Grid Background="#FF4E92B9">
+        <Button x:Name="BtnCheckValid" Content="CheckValid" Margin="0,0,16,15" Click="BtnCheckValid_Click" Height="30" VerticalAlignment="Bottom" Background="{x:Null}" Foreground="White" BorderBrush="White" HorizontalAlignment="Right" Width="78"/>
+        <Button x:Name="BtnSelectList" Content="Select List" HorizontalAlignment="Left" Margin="195,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.741,4.361" Width="96" Click="BtnSelectList_Click" Background="{x:Null}" Foreground="White" BorderBrush="White"/>
+        <TextBox x:Name="TxtAddressFile"  HorizontalAlignment="Left" Margin="20,24,0,0" Text="" TextWrapping="NoWrap" VerticalAlignment="Top" Width="153"/>
+        <TextBox  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" x:Name="TxtJWTToken" HorizontalAlignment="Center" Margin="0,80,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" Height="148"/>
+        <Label Content="Jwt token :" HorizontalAlignment="Left" Margin="20,50,0,0" Foreground="White" Height="25" VerticalAlignment="Top"/>
+        <ListView  x:Name="LogShow" Margin="0,233,0,50" HorizontalAlignment="Center" Width="270">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Logs" Width="220px"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="About" HorizontalAlignment="Left" Margin="16,0,0,15" Width="67" Click="Button_Click" Background="{x:Null}" BorderBrush="White" Foreground="White" Height="30" VerticalAlignment="Bottom"/>
+
+
+    </Grid>
+</Window>

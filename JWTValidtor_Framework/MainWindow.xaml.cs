@@ -6,13 +6,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Microsoft.CodeAnalysis;
 
 
 namespace JWTValidetor
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for <see cref="MainWindow"/>.xaml
 	/// </summary>
 	public partial class MainWindow : Window
 	{
@@ -40,36 +40,36 @@ namespace JWTValidetor
 
 		}
 
-		private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-		{
-			WriteToTextBox("Finish");
-		}
+		private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => WriteToTextBox("Finish");
 
 		private void BruteForce(object sender, DoWorkEventArgs e)
 		{
-			if (string.IsNullOrEmpty(e.Argument.ToString()))
+			if (!string.IsNullOrEmpty(e.Argument.ToString()))
+			{
+				JWTToken = e.Argument.ToString();
+				foreach (var item in listpasswords)
+				{
+					var ret = invalidnew(item);
+					if (ret)
+					{
+						MessageBox.Show("Password Find " + item);
+						WriteToTextBox("Find Password " + item);
+						return;
+					}
+					else
+						WriteToTextBox("Faild " + item);
+				}
+			}
+			else
 			{
 				MessageBox.Show("Jwt is Empty!");
 				return;
-			}
-			JWTToken = e.Argument.ToString();
-			foreach (var item in listpasswords)
-			{
-				var ret = invalidnew(item);
-				if (ret)
-				{
-					MessageBox.Show("Passwod Find " + item);
-					WriteToTextBox("Find Password " + item);
-					return;
-				}
-				else
-					WriteToTextBox("Faild " + item);
 			}
 		}
 
 		private void WriteToTextBox(string text)
 		{
-			if (this.LogShow.Dispatcher.CheckAccess())
+			if (LogShow.Dispatcher.CheckAccess())
 			{
 				this.LogShow.Items.Add(text);
 			}
@@ -82,7 +82,6 @@ namespace JWTValidetor
 		}
 		public bool invalidnew(string secret)
 		{
-
 
 
 			try
